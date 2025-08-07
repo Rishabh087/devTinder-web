@@ -8,7 +8,7 @@ import axios from "axios"
 const EditProfile = ({user}) => {
   const [firstName, setFirstName] = useState(user?.firstName);
   const [lastName, setLastName] = useState(user?.lastName);
-  const [age, setAge] = useState(user?.age);
+  const [age, setAge] = useState(user?.age || "");
   const [about, setAbout] = useState(user?.about);
   const [gender, setGender] = useState(user?.gender);
   const [error, setError] = useState('');
@@ -83,16 +83,17 @@ const EditProfile = ({user}) => {
             <div className="label">
               <span className="label-text">Gender:</span>
             </div>
-            <select defaultValue="Pick a color" className="select"
-            type="text"
-            value={gender}
+            <select
+             className="select"
+            value={gender || ""}
             onChange={(e) => setGender(e.target.value)}
-            >
-            <option disabled={true}>Select your gender</option>
-            <option>Male</option>
-            <option>Female</option>
-            <option>Others</option>
+             >
+            <option value="" disabled>Select your gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Others">Others</option>
             </select>
+
           </label>
 
           <label className="form-control w-full max-w-xs my-0">

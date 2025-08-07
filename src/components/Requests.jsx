@@ -7,14 +7,12 @@ import { useDispatch, useSelector } from 'react-redux';
 const Requests = () => {
   const dispatch = useDispatch();
   const requests = useSelector((store) => store.requests);
-
-
-
   const reviewRequest = async (status , _id) => {
     try {
         const res =  await axios.post(BASE_URL + "/request/review/" + status + "/" + _id , {} , 
             {withCredentials : true}
          )
+         dispatch(removeRequest(_id))
     } catch (error) {
       console.log(error.message)  
     }
@@ -26,7 +24,6 @@ const Requests = () => {
         withCredentials: true
       });
       dispatch(addRequest(res.data.data));
-      dispatch(removeRequest(_id))
     } catch (error) {
       console.log(error);
     }
