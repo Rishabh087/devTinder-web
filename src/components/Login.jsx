@@ -7,10 +7,10 @@ import { useNavigate } from 'react-router-dom';
 import {BASE_URL} from "../utils/constants"
 
 const Login = () => {
-       const [emailId, setemailId] =  useState("@gmail.com") ;
-       const [passWord, setpassword] =  useState("@12345") ;
-       const [firstName , setFirstName] = useState("")
-       const [lastName ,  setLastName] = useState("")
+       const [emailId, setemailId] =  useState("jhon@gmail.com") ;
+       const [passWord, setpassword] =  useState("Jhon@12345") ;
+       const [firstName , setFirstName] = useState("Jhon")
+       const [lastName ,  setLastName] = useState("Doe")
        const [error , setError] = useState("");
        const [isLogin , setIsLogin] = useState(true) ;
 
@@ -50,7 +50,7 @@ const Login = () => {
   return (
 
 <div
-  className={`card bg-base-100 image-full w-96 shadow-sm ml-[38%] h-[70%] ${isLogin ? 'mt-20' : 'mt-2'}`}
+  className={`card bg-base-100 image-full w-96 shadow-sm ml-[38%] h-[70%] ${isLogin ? 'mt-12' : 'mt-2'}`}
 >
   <figure>
     <img
