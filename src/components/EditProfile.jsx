@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import UserCard from './UserCard';
 import {BASE_URL}from "./../utils/constants"
 import {addUser}from "./../utils/userSlice"
 import {useDispatch} from "react-redux"
 import axios from "axios"
-
 const EditProfile = ({user}) => {
   const [firstName, setFirstName] = useState(user?.firstName);
   const [lastName, setLastName] = useState(user?.lastName);
@@ -15,7 +15,8 @@ const EditProfile = ({user}) => {
   const [photoUrl, setPhotoUrl] = useState(user?.photoUrl);
   const [showToast , setShowToast] = useState(false)
 
-  const dispatch = useDispatch() 
+  const dispatch = useDispatch()
+  const navigate = useNavigate(); 
 
   const saveProfile =  async ()  =>{
     try {
@@ -30,9 +31,13 @@ const EditProfile = ({user}) => {
         setShowToast(true)
         const i = setTimeout(() => {
           setShowToast(false)
+          navigate("/feed")
         } , 3000)
+
+        
+
     } catch (err) {
-      setError(err.response.message)
+      setError(err.response?.data?.message || err.message || "An unexpected error occurred.");
     }
   }
 

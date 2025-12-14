@@ -10,22 +10,21 @@ import appStore from "./utils/appStore";
 
 function App() {
   return (
-    <Provider store={appStore}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Body />}>
-            {/* Default page = Login */}
-            <Route index element={<Login />} />
-
-            {/* App pages */}
-            <Route path="feed" element={<Feed />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="connections" element={<Connections />} />
-            <Route path="requests" element={<Requests />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </Provider>
+    <>
+      <Provider store={appStore}>
+        <BrowserRouter basename="/">
+          <Routes>
+            <Route path="/" element={<Body />}>
+              <Route path="/feed" element={<Feed />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/connections" element={<Connections />} />
+              <Route path="/requests" element={<Requests />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </Provider>
+    </>
   );
 }
 
