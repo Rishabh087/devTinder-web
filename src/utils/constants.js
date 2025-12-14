@@ -1,4 +1,6 @@
- export const BASE_URL = "http://localhost:3000" ;
-//export const BASE_URL = "https://devtinder-1-clbf.onrender.com";
+ //export const BASE_URL = "http://localhost:3000" ;
+ export const BASE_URL = import.meta.env.VITE_API_URL;
+
+
 
 
